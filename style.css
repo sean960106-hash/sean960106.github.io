@@ -1,0 +1,607 @@
+/* ==========================================================================
+   1. 全域設定與明亮色彩系統 (單元08、09、10、11)
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Microsoft JhengHei", "PingFang TC", "Segoe UI", Arial, sans-serif;
+  background-color: #f4f7fb;
+  color: #1e293b;
+  line-height: 1.7;
+}
+
+body {
+  background: linear-gradient(180deg, #eef6ff 0%, #f8fafc 45%, #f1f5f9 100%);
+}
+
+/* ==========================================================================
+   2. 頂部頁首與導覽列 (position: sticky 固定定位，單元10、12)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.92);
+  border-bottom: 1px solid #dbeafe;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+}
+
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0.9rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.brand-logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0284c7;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  gap: 1.25rem;
+}
+
+/* 超連結四種狀態設定 (單元12) */
+.nav-link:link,
+.nav-link:visited {
+  color: #334155;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 6px;
+  /* [特效] 導覽列超連結懸停平滑變色與背景過渡 - 使用 transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:active {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+/* 屬性選擇器：針對開新視窗的外部連結加上指標樣式 (單元08、12) */
+a[target="_blank"] {
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   3. 主容器與共用卡片 Box Model (單元10)
+   ========================================================================== */
+.container {
+  max-width: 1080px;
+  margin: 2rem auto;
+  padding: 0 1.25rem;
+}
+
+.section-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 2.25rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 16px rgba(148, 163, 184, 0.12);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.75rem;
+}
+
+.section-header h2 {
+  font-size: 1.55rem;
+  color: #0f172a;
+  letter-spacing: 1px;
+  /* 文字陰影效果 (單元09) */
+  text-shadow: 1px 1px 2px rgba(14, 165, 233, 0.15);
+}
+
+.section-tag {
+  font-size: 0.8rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.section-divider {
+  border: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #38bdf8, #e0f2fe);
+  margin-bottom: 1.75rem;
+}
+
+/* ==========================================================================
+   4. 區塊一：個人基本資訊 (About & Aside)
+   ========================================================================== */
+.about-layout {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.profile-aside {
+  flex: 0 0 220px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.photo-frame {
+  padding: 0.75rem;
+  background-color: #f8fafc;
+  border: 2px dashed #93c5fd;
+  border-radius: 16px;
+}
+
+.profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #e2e8f0;
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+  /* [特效] 個人照片懸停時微幅放大並增加亮度 - 使用 transition + transform: scale + filter */
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
+  filter: brightness(1.05);
+}
+
+.photo-caption {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.about-details {
+  flex: 1;
+  min-width: 280px;
+}
+
+.user-name {
+  font-size: 2rem;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.en-name {
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: #64748b;
+}
+
+.user-dept {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #0284c7;
+  margin-bottom: 1rem;
+}
+
+.user-slogan {
+  padding: 0.85rem 1.2rem;
+  margin-bottom: 1.2rem;
+  background: linear-gradient(90deg, #e0f2fe, #f0f9ff);
+  border-left: 4px solid #0284c7;
+  border-radius: 0 8px 8px 0;
+  font-style: italic;
+  color: #0369a1;
+  font-weight: 600;
+}
+
+.intro-box {
+  background-color: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.intro-box p {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 0.45rem;
+}
+
+.intro-box p:last-child {
+  margin-bottom: 0;
+}
+
+.action-group {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.55rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  /* [特效] 按鈕懸停平滑上浮與外框線提示 - 使用 transition + transform: translateY + outline */
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  outline: 2px solid #bae6fd;
+}
+
+.btn-primary {
+  background-color: #0284c7;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #0369a1;
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  color: #0284c7;
+  border: 1px solid #7dd3fc;
+}
+
+.btn-outline:hover {
+  background-color: #f0f9ff;
+}
+
+/* ==========================================================================
+   5. 區塊二：專業與技能視覺化 (純 CSS 圓環 + 動畫進度條，單元11、12)
+   ========================================================================== */
+.skills-rings {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.ring-card {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  /* [特效] 技能圓環卡片懸停放大與陰影強化 - 使用 transition + transform: scale */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.ring-card:hover {
+  transform: scale(1.04);
+  border-color: #38bdf8;
+  box-shadow: 0 8px 20px rgba(14, 165, 233, 0.12);
+}
+
+.ring-chart {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  margin: 0 auto 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.ring-chart::before {
+  content: "";
+  position: absolute;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background-color: #f8fafc;
+}
+
+.ring-chart span {
+  position: relative;
+  z-index: 1;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #0f172a;
+}
+
+/* 純 CSS 漸層繪製圓環百分比 */
+.ring-p90 { background: conic-gradient(#0284c7 0% 90%, #e2e8f0 90% 100%); }
+.ring-p85 { background: conic-gradient(#0ea5e9 0% 85%, #e2e8f0 85% 100%); }
+.ring-p80 { background: conic-gradient(#14b8a6 0% 80%, #e2e8f0 80% 100%); }
+.ring-p75 { background: conic-gradient(#6366f1 0% 75%, #e2e8f0 75% 100%); }
+
+.ring-title {
+  font-size: 1rem;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.ring-desc {
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+/* 水平進度條與關鍵影格動畫 (單元12) */
+@keyframes bar-grow {
+  from {
+    width: 0;
+  }
+}
+
+.skills-bars {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+
+.bar-item {
+  margin-bottom: 1.1rem;
+}
+
+.bar-item:last-child {
+  margin-bottom: 0;
+}
+
+.bar-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 0.4rem;
+}
+
+.bar-track {
+  width: 100%;
+  height: 10px;
+  background-color: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #0284c7);
+  /* [特效] 網頁載入時技能長條圖平滑伸展動畫 - 使用 @keyframes + animation */
+  animation: bar-grow 1.5s ease-out;
+}
+
+.bar-w90 { width: 90%; }
+.bar-w80 { width: 80%; }
+.bar-w75 { width: 75%; }
+
+/* ==========================================================================
+   6. 區塊三：經歷與專案 (Article 左圖右文卡片排版)
+   ========================================================================== */
+.exp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.exp-card {
+  display: flex;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  /* [特效] 經歷卡片懸停微幅右移與邊框變色 - 使用 transition + transform: translateX */
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.exp-card:hover {
+  transform: translateX(5px);
+  border-color: #7dd3fc;
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.08);
+}
+
+.exp-media {
+  flex: 0 0 240px;
+  background-color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-thumb {
+  width: 100%;
+  height: 100%;
+  min-height: 170px;
+  object-fit: cover;
+  display: block;
+}
+
+.exp-body {
+  flex: 1;
+  padding: 1.35rem 1.5rem;
+}
+
+.exp-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.35rem;
+}
+
+.exp-role {
+  color: #0284c7;
+  font-weight: 600;
+}
+
+.exp-title {
+  font-size: 1.2rem;
+  color: #0f172a;
+  margin-bottom: 0.55rem;
+}
+
+.exp-desc {
+  font-size: 0.93rem;
+  color: #475569;
+  margin-bottom: 0.85rem;
+  text-align: justify;
+}
+
+.exp-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0284c7;
+  text-decoration: none;
+}
+
+.exp-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   7. 區塊四：聯絡資訊 (置於最底下且精簡縮小之橫向條)
+   ========================================================================== */
+.contact-compact {
+  background-color: #ffffff;
+  border: 1px solid #bae6fd;
+  border-radius: 10px;
+  padding: 0.85rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(14, 165, 233, 0.06);
+}
+
+.contact-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-label {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.contact-address {
+  font-style: normal;
+}
+
+.email-btn {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #0284c7;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.25s ease;
+}
+
+.email-btn:hover {
+  background-color: #0369a1;
+}
+
+.social-group {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  padding: 0.28rem 0.7rem;
+  font-size: 0.82rem;
+  color: #334155;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.social-link:hover {
+  background-color: #e0f2fe;
+  color: #0284c7;
+  border-color: #7dd3fc;
+}
+
+/* ==========================================================================
+   8. 頁尾 (Footer) 與手機版響應式排版
+   ========================================================================== */
+.site-footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  padding: 1.1rem 1.5rem;
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+.footer-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.top-btn {
+  color: #0284c7;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  background-color: #f0f9ff;
+}
+
+.top-btn:hover {
+  background-color: #e0f2fe;
+}
+
+@media (max-width: 768px) {
+  .about-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .user-slogan {
+    border-left: none;
+    border-top: 3px solid #0284c7;
+  }
+
+  .action-group {
+    justify-content: center;
+  }
+
+  .exp-card {
+    flex-direction: column;
+  }
+
+  .exp-media {
+    flex: 0 0 180px;
+  }
+}
